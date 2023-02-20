@@ -1,0 +1,13 @@
+.profile__occupation {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 0;
+}
+
+@media(max-width: 420px) {
+  .profile__occupation {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
