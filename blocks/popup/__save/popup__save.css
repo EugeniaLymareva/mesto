@@ -1,0 +1,13 @@
+.popup__save {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+@media(max-width: 420px) {
+  .popup__save {
+    font-size: 14px;
+  }
+}
