@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 74px;
+  border-block-end: solid 1px #545454;
+  /* writing-mode: horizontal-tb; */
+  margin: 45px auto 39px;
+}
+
+@media(max-width: 420px) {
+  .header {
+    margin: 28px auto 41.5px;
+    min-height: 56px;
+  }
+}
+
+
+
