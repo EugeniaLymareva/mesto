@@ -3,8 +3,7 @@
   align-items: flex-start;
   width: 100%;
   min-height: 74px;
-  border-block-end: solid 1px #545454;
-  /* writing-mode: horizontal-tb; */
+  border-block-end: solid 1px rgba(84, 84, 84, 0.7);
   margin: 45px auto 39px;
 }
 
