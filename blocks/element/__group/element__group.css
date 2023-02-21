@@ -1,6 +1,14 @@
 .element__group {
-  max-width: 22px;
-  max-height: 19px;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/Group.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 0;
+
 }
 
 .element__group:hover {

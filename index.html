@@ -21,60 +21,58 @@
           <div class="profile__info">
             <div class="profile__user-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <div class="profile__edit-button">
-                <img class="profile__pen" src="./images/Vector-pen.svg" alt="кнопка редактировать профиль">
-              </div>
+              <button class="profile__edit-button" type="button">
+              </button>
             </div>
             <p class="profile__occupation">Исследователь океана</p>
           </div>
         </div>
-        <div class="profile__add-button">
-          <img class="profile__plus" src="./images/Add-Button.svg" alt="кнопка добавить профиль">
-        </div>
+        <button class="profile__add-button" type="button">
+        </button>
       </section>
 
       <section class="elements">
         <ul class="elements__grid">
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="фото Сентинский храм">
+            <img class="element__mask-group" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Карачаевск</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="фото Гора Эльбрус">
+            <img class="element__mask-group" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="фото Горы Домбай">
+            <img class="element__mask-group" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="фото Гора Эльбрус">
+            <img class="element__mask-group" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="фото Горы Домбай">
+            <img class="element__mask-group" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__mask-group" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="фото Сентинский храм">
+            <img class="element__mask-group" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="фото пользователя">
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкесия</h2>
-              <img class="element__group element__group_active" src="./images/Group.svg" alt="кнопка нравится">
+              <button class="element__group" type="button"></button>
             </div>
           </li>
         </ul>
@@ -86,10 +84,10 @@
     </footer>
     </div>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
-        <img class="popup__close" src="./images/Close-Icon.svg" alt="кнопка закрыть">
-        <form class="popup__form">
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form" name="profile-form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input type="text" name="name" class="popup__item" placeholder="Имя">
@@ -98,8 +96,8 @@
           <input type="submit" value="Сохранить" class="popup__submit-button">
         </form>
       </div>
-    </section>
-    <script src="./scripts/script.js"></script>
+    </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
 
