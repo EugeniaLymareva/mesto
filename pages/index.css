@@ -1,6 +1,6 @@
 @import url(../vendor/normalize.css);
 
-@import url(../vendor/fonts/inter.css);
+@import url(../vendor/fonts/fonts.css);
 
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
@@ -18,21 +18,20 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__occupation/profile__occupation.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__pen/profile__pen.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__plus/profile__plus.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__grid/elements__grid.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__mask-group/element__mask-group.css);
+@import url(../blocks/element/__trash/element__trash.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__group/_active/element__group_active.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_active/popup_active.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
@@ -40,7 +39,11 @@
 @import url(../blocks/popup/__input-container/popup__input-container.css);
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
-@import url(../blocks/popup/__save/popup__save.css);
+
+@import url(../blocks/popup-image/popup-image.css);
+@import url(../blocks/popup-image/__container/popup-image__container.css);
+@import url(../blocks/popup-image/__title/popup-image__title.css);
+@import url(../blocks/popup-image/__img/popup-image__img.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
