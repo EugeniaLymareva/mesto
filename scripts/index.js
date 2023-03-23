@@ -5,6 +5,7 @@ const addButton = body.querySelector('.profile__add-button');
 const profileName = body.querySelector('.profile__name');
 const profileOccupation = body.querySelector('.profile__occupation');
 
+
 // popup edit elements
 const popupEdit = body.querySelector('#popup-edit');
 const editForm = popupEdit.querySelector('form[name="edit-form"]');
@@ -22,6 +23,8 @@ const popupImage = body.querySelector('.popup-image');
 const popupImg = popupImage.querySelector('.popup-image__img');
 const popupImageTitle = popupImage.querySelector('.popup-image__title');
 
+const popUps = body.querySelectorAll('.popup');
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
@@ -29,6 +32,29 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
+
+function closePopupEsc(evt) {
+  if(evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (popupOpened) {
+      closePopup(popupOpened);
+    }
+  };
+};
+
+document.addEventListener('keydown', closePopupEsc)
+
+function closePopupOverlay(evt) {
+  const popUp = evt.target;
+  if (popUp.classList.contains('popup_opened')) {
+    closePopup(popUp);
+  };
+};
+
+popUps.forEach((popUp) => {
+  popUp.addEventListener('click', closePopupOverlay)
+});
+
 
 editButton.addEventListener('click', function() {
   nameInput.value = profileName.textContent;
@@ -133,9 +159,11 @@ function addFormSubmit(evt) {
 
   addCard(createCard(сaptionInput.value, linkPictureInput.value));
   closePopup(popupAdd);
-  
+
   evt.target.reset();
 }
 
 addForm.addEventListener('submit', addFormSubmit);
+
+
 
