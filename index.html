@@ -58,11 +58,16 @@
     <div id="popup-edit" class="popup">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
-        <form class="popup__form" name="edit-form">
+        <form class="popup__form" name="edit-form" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
-            <input type="text" name="name" class="popup__item" placeholder="Имя">
-            <input type="text" name="job" class="popup__item" placeholder="О себе">
+            <input type="text" name="name" class="popup__item" id="name-input" placeholder="Имя" required minlength="2" maxlength="40">
+            <span class="popup__item-error name-input-error"></span>
+
+            <input type="text" name="job" class="popup__item" id="job-input" placeholder="О себе" required minlength="2" maxlength="200">
+            <span class="popup__item-error job-input-error"></span>
+
+
           </fieldset>
           <input type="submit" value="Сохранить" class="popup__submit-button">
         </form>
@@ -72,11 +77,15 @@
     <div id="popup-add" class="popup">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
-        <form class="popup__form" name="add-form">
+        <form class="popup__form" name="add-form" novalidate>
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__input-container">
-            <input type="text" name="сaption" class="popup__item" placeholder="Название">
-            <input type="text" name="link-picture" class="popup__item" placeholder="Ссылка на картинку">
+            <input type="text" name="сaption" class="popup__item" id="сaption-input" placeholder="Название" required>
+            <span class="popup__item-error сaption-input-error"></span>
+
+            <input type="url" name="link-picture" class="popup__item" id="link-picture-input" placeholder="Ссылка на картинку" required minlength="2" maxlength="30">
+            <span class="popup__item-error link-picture-input-error"></span>
+
           </fieldset>
           <input type="submit" value="Создать" class="popup__submit-button">
         </form>
@@ -92,6 +101,7 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
 
