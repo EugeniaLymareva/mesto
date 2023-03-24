@@ -1,3 +1,12 @@
+const formConfigObject = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'popup__item-error_active',
+}
+
 
 //показывает элемент ошибки
 const showInputError = (formElement, inputElement, formConfigObject) => {
@@ -19,7 +28,8 @@ const hideInputError = (formElement, inputElement, formConfigObject) => {
 const checkInputValidity = (formElement, inputElement, formConfigObject) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, formConfigObject)
-  } else {hideInputError(formElement, inputElement, formConfigObject)
+  } else {
+    hideInputError(formElement, inputElement, formConfigObject)
   }
 }
 
@@ -41,13 +51,25 @@ const toggleButtonState = (inputList, buttonElement, formConfigObject) => {
   }
 }
 
+const setButtondisabled = (submitButton) => {
+  submitButton.setAttribute("disabled", "disabled")
+  submitButton.classList.add(formConfigObject.inactiveButtonClass)
+}
+
+const removeFormInputsValidation = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(formConfigObject.inputSelector))
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, formConfigObject)
+  })
+}
+
 //добавляет слушатель событий всем полям ввода внутри формы
 const setEventListeners = (formElement, formConfigObject) => {
   const inputList = Array.from(formElement.querySelectorAll(formConfigObject.inputSelector))
   const buttonElement = formElement.querySelector(formConfigObject.submitButtonSelector)
   toggleButtonState(inputList, buttonElement, formConfigObject)
   inputList.forEach((inputElement) => {
-       inputElement.addEventListener('input', function() {
+    inputElement.addEventListener('input', function() {
       checkInputValidity(formElement, inputElement, formConfigObject)
       toggleButtonState(inputList, buttonElement, formConfigObject)
     })
@@ -66,14 +88,7 @@ const enableValidation = (formConfigObject) => {
   })
 }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__item_type_error',
-  errorClass: 'popup__item-error_active',
-})
+enableValidation(formConfigObject)
 
 
 
