@@ -27,12 +27,6 @@ const popupImageTitle = popupImage.querySelector('.popup__image-description');
 const popUps = body.querySelectorAll('.popup');
 
 function openPopup(popup) {
-  const popupForm = popup.querySelector(formConfigObject.formSelector);
-  removeFormInputsValidation(popupForm);
-  const submitButton = popup.querySelector(formConfigObject.submitButtonSelector);
-  if (submitButton) {
-    setButtondisabled(submitButton);
-  }
   document.addEventListener('keydown', closePopupEsc);
   popup.classList.add('popup_opened');
 };
@@ -67,10 +61,20 @@ editButton.addEventListener('click', function() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileOccupation.textContent;
 
+  const popupForm = popupEdit.querySelector(formConfigObject.formSelector);
+  removeFormInputsValidation(popupForm);
+  const submitButton = popupEdit.querySelector(formConfigObject.submitButtonSelector);
+  setButtondisabled(submitButton);
+
   openPopup(popupEdit);
 });
 
 addButton.addEventListener('click', function() {
+  const popupForm = popupAdd.querySelector(formConfigObject.formSelector);
+  removeFormInputsValidation(popupForm);
+  const submitButton = popupAdd.querySelector(formConfigObject.submitButtonSelector);
+  setButtondisabled(submitButton);
+
   openPopup(popupAdd);
 });
 
