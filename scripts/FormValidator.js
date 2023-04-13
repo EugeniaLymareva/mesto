@@ -36,7 +36,7 @@ export class FormValidator {
   }
 
   //меняет состояние кнопки
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._config.inactiveButtonClass)
       this._submitButton.setAttribute("disabled", "disabled")
@@ -48,11 +48,11 @@ export class FormValidator {
 
   //добавляет слушатель событий всем полям ввода внутри формы
   _setEventListeners() {
-    this._toggleButtonState()
+    this.toggleButtonState()
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', (evt) => {
         this._checkInputValidity(evt.target)
-        this._toggleButtonState()
+        this.toggleButtonState()
       })
     })
 
@@ -67,7 +67,6 @@ export class FormValidator {
   }
 
   removeFormInputsValidation() {
-    this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector))
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement)
     })

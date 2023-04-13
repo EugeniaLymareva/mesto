@@ -1,5 +1,5 @@
-import { Card } from './card.js'
-import { FormValidator } from './form-validator.js'
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
 
 const formConfigObject = {
   formSelector: '.popup__form',
@@ -21,12 +21,16 @@ const profileOccupation = body.querySelector('.profile__occupation')
 // popup edit elements
 const popupEdit = body.querySelector('#popup-edit')
 const editForm = popupEdit.querySelector('form[name="edit-form"]')
+const editFormValidator = new FormValidator(formConfigObject, editForm)
+
 const nameInput = editForm.querySelector('input[name="name"]')
 const jobInput = editForm.querySelector('input[name="job"]')
 
 // popup add elements
 const popupAdd = body.querySelector('#popup-add')
 const addForm = popupAdd.querySelector('form[name="add-form"]')
+const addFormValidator = new FormValidator(formConfigObject, addForm)
+
 const сaptionInput = addForm.querySelector('input[name="сaption"]')
 const linkPictureInput = addForm.querySelector('input[name="link-picture"]')
 
@@ -74,32 +78,22 @@ formList.forEach((formElement) => {
   formValidator.enableValidation()
 })
 
-const setButtondisabled = (submitButton) => {
-  submitButton.setAttribute("disabled", "disabled")
-  submitButton.classList.add(formConfigObject.inactiveButtonClass)
-}
 
 editButton.addEventListener('click', function() {
   nameInput.value = profileName.textContent
   jobInput.value = profileOccupation.textContent
 
-  const popupForm = popupEdit.querySelector(formConfigObject.formSelector)
-  const formValidator = new FormValidator(formConfigObject, popupForm)
-  formValidator.removeFormInputsValidation()
+  editFormValidator.removeFormInputsValidation()
 
-   const submitButton = popupEdit.querySelector(formConfigObject.submitButtonSelector)
-  setButtondisabled(submitButton)
+  editFormValidator.toggleButtonState()
 
   openPopup(popupEdit)
 })
 
 addButton.addEventListener('click', function() {
-  const popupForm = popupAdd.querySelector(formConfigObject.formSelector)
-  const formValidator = new FormValidator(formConfigObject, popupForm)
-  formValidator.removeFormInputsValidation()
+  addFormValidator.removeFormInputsValidation()
 
-   const submitButton = popupAdd.querySelector(formConfigObject.submitButtonSelector)
-  setButtondisabled(submitButton)
+  addFormValidator.toggleButtonState()
 
   openPopup(popupAdd)
 })
@@ -164,6 +158,7 @@ function addCard(cardElement) {
 initialCards.forEach(function (data) {
   addCard(createCard(data))
 })
+
 
 function addFormSubmit(evt) {
   evt.preventDefault()
