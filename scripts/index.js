@@ -22,6 +22,7 @@ const profileOccupation = body.querySelector('.profile__occupation')
 const popupEdit = body.querySelector('#popup-edit')
 const editForm = popupEdit.querySelector('form[name="edit-form"]')
 const editFormValidator = new FormValidator(formConfigObject, editForm)
+editFormValidator.enableValidation()
 
 const nameInput = editForm.querySelector('input[name="name"]')
 const jobInput = editForm.querySelector('input[name="job"]')
@@ -30,14 +31,10 @@ const jobInput = editForm.querySelector('input[name="job"]')
 const popupAdd = body.querySelector('#popup-add')
 const addForm = popupAdd.querySelector('form[name="add-form"]')
 const addFormValidator = new FormValidator(formConfigObject, addForm)
+addFormValidator.enableValidation()
 
 const сaptionInput = addForm.querySelector('input[name="сaption"]')
 const linkPictureInput = addForm.querySelector('input[name="link-picture"]')
-
-// popup image elements
-const popupImage = body.querySelector('.popup-image')
-const popupImg = popupImage.querySelector('.popup__image')
-const popupImageTitle = popupImage.querySelector('.popup__image-description')
 
 const popUps = body.querySelectorAll('.popup')
 
@@ -70,14 +67,6 @@ function closePopupOverlay(evt) {
 popUps.forEach((popUp) => {
   popUp.addEventListener('click', closePopupOverlay)
 })
-
-
-const formList = Array.from(document.querySelectorAll(formConfigObject.formSelector))
-formList.forEach((formElement) => {
-  const formValidator = new FormValidator(formConfigObject, formElement)
-  formValidator.enableValidation()
-})
-
 
 editButton.addEventListener('click', function() {
   nameInput.value = profileName.textContent
