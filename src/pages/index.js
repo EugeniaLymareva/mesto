@@ -7,7 +7,7 @@ import UserInfo from '../components/UserInfo.js'
 import { editButton, addButton, formConfigObject, initialCards } from '../utils/constants.js'
 import './index.css'
 
-const imagePopup = new PopupWithImage('.popup-image')
+const imagePopup = new PopupWithImage('.popup-image', '.popup__image', '.popup__image-description')
 imagePopup.setEventListeners()
 
 const section = new Section({
@@ -37,10 +37,6 @@ const userInfo = new UserInfo({
 
 const popupUserInfo = new PopupWithForm({
   popupSelector: '#popup-edit',
-  handlePopupOpen: () => {
-    const userInfoObj = userInfo.getUserInfo()
-    popupUserInfo.setInputValues(userInfoObj)
-  },
   handleFormSubmit: (inputValues) => {
     userInfo.setUserInfo(inputValues)
   }
@@ -51,7 +47,7 @@ const addCardPopup = new PopupWithForm({
   popupSelector: '#popup-add',
   handleFormSubmit: (inputValues) => {
     const item = {
-      name: inputValues['caption'],
+      name: inputValues['сaption'],
       link: inputValues['link-picture'],
     }
     section.renderer(item)
@@ -66,20 +62,15 @@ const addFormValidator = new FormValidator(formConfigObject, addCardPopup.getPop
 addFormValidator.enableValidation()
 
 editButton.addEventListener('click', () => {
-  userInfo.getUserInfo()
-
   editFormValidator.removeFormInputsValidation()
-
   editFormValidator.toggleButtonState()
-
+  popupUserInfo.setInputValues(userInfo.getUserInfo())
   popupUserInfo.open()
 })
 
 addButton.addEventListener('click', () => {
   addFormValidator.removeFormInputsValidation()
-
   addFormValidator.toggleButtonState()
-
   addCardPopup.open()
 })
 

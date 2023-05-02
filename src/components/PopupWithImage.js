@@ -1,20 +1,18 @@
 import Popup from './Popup.js'
 
 export default class PopupWithImage extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, popupImageSelector, popupImageTitleSelector) {
     super(popupSelector)
+    this._popupImg = this._popUp.querySelector(popupImageSelector)
+    this._popupImageTitle = this._popUp.querySelector(popupImageTitleSelector)
   }
 
   open(data) {
-    document.addEventListener('keydown', this._handleEscClose)
-
     const { name, link } = data
-    const popupImg = this._popUp.querySelector('.popup__image')
-    const popupImageTitle = this._popUp.querySelector('.popup__image-description')
 
-    popupImg.src = link
-    popupImg.alt = `фото ${name}`
-    popupImageTitle.textContent = name
+    this._popupImg.src = link
+    this._popupImg.alt = `фото ${name}`
+    this._popupImageTitle.textContent = name
 
     super.open()
   }
