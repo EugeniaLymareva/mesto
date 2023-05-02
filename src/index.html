@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
   <div class="page">
 
       <header class="header">
-        <img class="header__logo" src="./images/Vector.svg" alt="Логотип Mesto Russia">
+        <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип Mesto Russia">
       </header>
 
     <main class="content">
 
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__avatar" src="./images/image.jpg" alt="Аватар пользователя">
+          <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Аватар пользователя">
           <div class="profile__info">
             <div class="profile__user-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -100,9 +99,8 @@
       </div>
     </div>
 
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./pages/index.js"></script>
+
   </body>
 </html>
 

@@ -1,10 +1,9 @@
-import { openPopup } from './index.js'
-
-export class Card {
-  constructor(data, cardTemplateSelector) {
+export default class Card {
+  constructor(data, cardTemplateSelector, handleCardClick) {
     this._name = data.name
     this._link = data.link
     this._cardTemplateSelector = cardTemplateSelector
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate() {
@@ -43,18 +42,6 @@ export class Card {
     this._element = null
   }
 
-  _handleCardClick() {
-    const popupImage = document.querySelector('.popup-image')
-    const popupImg = document.querySelector('.popup__image')
-    const popupImageTitle = document.querySelector('.popup__image-description')
-
-    popupImg.src = this._link
-    popupImg.alt = this._cardImage.alt
-    popupImageTitle.textContent = this._name
-
-    openPopup(popupImage)
-  }
-
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
       this._handleCardLike()
@@ -65,7 +52,11 @@ export class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick()
+      const data = {
+        name: this._name,
+        link: this._link
+      }
+      this._handleCardClick(data)
     })
 
     return this._element
