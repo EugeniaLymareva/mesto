@@ -1,9 +1,22 @@
 export default class Card {
-  constructor(data, cardTemplateSelector, handleCardClick) {
-    this._name = data.name
-    this._link = data.link
+  constructor(options) {
+    const { cardData, cardTemplateSelector, handleCardClick, userId, handleCardDelete, handleCardLike } = options
+    this._name = cardData.name
+    this._link = cardData.link
+    this._likes = cardData.likes
+    this._ownerId = cardData.owner._id
+    this._cardId = cardData._id
+
+    this._userId = userId
     this._cardTemplateSelector = cardTemplateSelector
+
     this._handleCardClick = handleCardClick
+    this._handleCardDelete = handleCardDelete
+    this._handleCardLike = handleCardLike
+  }
+
+  getCardId() {
+    return this._cardId
   }
 
   _getTemplate() {
@@ -28,27 +41,51 @@ export default class Card {
     this._likeButton = this._element.querySelector('.element__group')
     this._trashButton = this._element.querySelector('.element__trash')
 
+    if(!(this._ownerId === this._userId)) {
+      this._trashButton.remove()
+    }
+    const userLike = this._likes.find((like) => like._id === this._userId)
+    if(userLike) {
+      this.setCardLike()
+    }
+
+    this._likeCounter(this._likes.length)
+
     this._setEventListeners();
 
     return this._element
   }
 
-  _handleCardLike() {
-    this._likeButton.classList.toggle('element__group_active')
+  setCardLike(count) {
+    this._likeButton.classList.add('element__group_active')
+    this._likeCounter(count)
   }
 
-  _handleCardDelete() {
+  setCardDislike(count) {
+    this._likeButton.classList.remove('element__group_active')
+    this._likeCounter(count)
+  }
+
+  isButtonLiked() {
+    return this._likeButton.classList.contains('element__group_active')
+  }
+
+  _likeCounter(count) {
+    this._element.querySelector('.element__like-counter').textContent = count
+  }
+
+  removeCard() {
     this._element.remove()
     this._element = null
   }
 
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
-      this._handleCardLike()
+      this._handleCardLike(this._cardId)
     })
 
     this._trashButton.addEventListener('click', () => {
-      this._handleCardDelete()
+      this._handleCardDelete(this)
     })
 
     this._cardImage.addEventListener('click', () => {
