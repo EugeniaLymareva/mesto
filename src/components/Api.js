@@ -4,24 +4,22 @@ export default class Api {
     this._headers = options.headers
   }
 
+  _checkResponse(response) {
+    return response.ok ? response.json() : Promise.reject(`Ошибка: ${res.status}`)
+  }
+
   async getUserInfo() {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-    if(!response.ok) {
-      return Promise.reject(`Ошибка: ${response.status}`)
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async getInitialCards() {
     const response = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async updateUserInfo(userData) {
@@ -30,10 +28,7 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify(userData)
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async addNewCard(cardData) {
@@ -42,10 +37,7 @@ export default class Api {
       method: 'POST',
       body: JSON.stringify(cardData)
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async deleteCard(cardId) {
@@ -53,10 +45,7 @@ export default class Api {
       headers: this._headers,
       method: 'DELETE'
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async likeCard(cardId) {
@@ -64,10 +53,7 @@ export default class Api {
       headers: this._headers,
       method: 'PUT'
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async dislikeCard(cardId) {
@@ -75,10 +61,7 @@ export default class Api {
       headers: this._headers,
       method: 'DELETE'
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 
   async updateAvatar(userData) {
@@ -87,9 +70,6 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify(userData)
     })
-    if(!response.ok) {
-      return Promise.reject((`Ошибка: ${res.status}`))
-    }
-    return response.json()
+    return this._checkResponse(response)
   }
 }

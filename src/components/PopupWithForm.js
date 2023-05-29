@@ -22,27 +22,23 @@ export default class PopupWithForm extends Popup {
     return this._inputValues
   }
 
-  renderLoading(isLoading) {
-    if(isLoading) {
-      this._submitBbutton.value = 'Сохранить...'
-    } else {
-      this._submitBbutton.value = 'Сохранить'
-    }
+  renderLoading(text) {
+    this._submitBbutton.value = text
   }
-
+  
   setEventListeners() {
     this._popUpForm.addEventListener('submit', (evt) => {
       evt.preventDefault()
-      this.renderLoading(true)
+      this.renderLoading('Сохранить...')
       this._handleFormSubmit(this._getInputValues())
     })
 
     super.setEventListeners()
   }
 
-  setInputValues(userInfoObj) {
+  setInputValues(object) {
     this._inputList.forEach((input) => {
-      input.value = userInfoObj[input.name]
+      input.value = object[input.name]
     })
   }
 
