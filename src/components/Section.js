@@ -14,4 +14,6 @@ export default class Section {
   addItem(cardElement) {
     this._container.prepend(cardElement)
   }
+
+ 
 }

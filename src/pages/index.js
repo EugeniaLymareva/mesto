@@ -8,6 +8,7 @@ import Api from '../components/Api.js'
 import { editButton, addButton, updateAvatar, formConfigObject } from '../utils/constants.js'
 import './index.css'
 import PopupWithButton from '../components/PopupWithButton.js'
+import moment from 'moment'
 
 async function main() {
   try {
@@ -34,6 +35,7 @@ async function main() {
     imagePopup.setEventListeners()
 
     const initialCards = await api.getInitialCards()
+    initialCards.sort((a, b) => moment(a.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ') - moment(b.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'))
 
     const popupDelete = new PopupWithButton({
       popupSelector:'#popup-delete',
